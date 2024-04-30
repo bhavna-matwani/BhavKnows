@@ -13,8 +13,12 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 import uuid
 import json
-import time
 import datetime
+import streamlit.components.v1 as components
+
+footer_html = """
+<div style="text-align: left; color: white;"><span>Connect: </span><a href="https://www.linkedin.com/in/bhavna-matwani/" target="_blank">LinkedIn</a><span style="padding: 0 10px;">|</span><a href="https://github.com/bhavna-matwani" target="_blank">GitHub</a></div>
+"""
 
 # Function to check if a string is a valid JSON
 def is_valid_json(data):
@@ -24,18 +28,10 @@ def is_valid_json(data):
     except json.JSONDecodeError:
         return False
 
-# Calling the Firebase secret key
-if "firebase_json_key" in os.environ:
-    firebase_json_key = os.getenv("firebase_json_key")
-else:
-    firebase_json_key = st.secrets["firebase"]['firebase_json_key']
-
-firebase_credentials = json.loads(firebase_json_key)
-
 # Function to initialize connection to Firebase Firestore
 @st.cache_resource
 def init_connection():
-    cred = credentials.Certificate(firebase_credentials)
+    cred = credentials.Certificate('.streamlit/firestore-key.json')
     firebase_admin.initialize_app(cred)
     return firestore.client()
 
@@ -58,7 +54,8 @@ else:
     openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 # Streamlit app title and disclaimer
-st.title("BhavKnow - ")
+st.title("BhavKnow - Resume Bot for Bhavna")
+components.html(footer_html, height=25)
 with st.expander("⚠️Disclaimer"):
     st.write("""This bot is a LLM trained on GPT-3.5-turbo model to answer questions about Bhavna's professional background and qualifications. Your responses are recorded in a database for quality assurance and improvement purposes. Please be respectful and avoid asking personal or inappropriate questions.""")
 
@@ -155,11 +152,13 @@ if "messages" not in st.session_state:
         welcome_message = """
             Welcome! I'm Resume Bot, a virtual assistant dedicated to showcasing Bhavna Matwani's remarkable qualifications and career achievements. Here to provide an in-depth view of her skills, experiences, and academic background, I can offer insights into various facets of her professional journey.
 
-Bhavna holds a Master's in Computer Science from New York University, where she excelled with a high GPA, and a Bachelor's in Electrical Engineering from SVNIT, India. Her technical expertise spans a broad range of programming languages, machine learning frameworks, and cloud technologies.
+            - Her Master's in Computer Science from NYU
+            - Her hands-on experience developing AI solutions like SmartSMS generator and FrameForesight
+            - Her proven track record in roles at Vimbly Group, Mastercard and IISc Bangalore
+            - His proficiency in programming languages, software development, ML frameworks, and cloud platforms
+            - Her passion for leveraging transformative technologies for positive societal impact
 
-Her professional experience includes roles at companies such as Vimbly Group, where she developed AI-powered tools, and Mastercard Technologies, where she built transaction monitoring systems. Bhavna's research has involved advanced scalable AI models on cloud for data analysis and image processing.
-
-Feel free to ask about any details of her education, work experience, technical skills, or her contributions to various projects and roles. What would you like to know more about?
+            Feel free to ask about any details of her education, work experience, technical skills, or her contributions to various projects and roles. What would you like to know more about?
             """
         message_placeholder.markdown(welcome_message)
 
