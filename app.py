@@ -31,12 +31,8 @@ def is_valid_json(data):
 # Function to initialize connection to Firebase Firestore
 @st.cache_resource
 def init_connection():
-    encoded_key = os.environ.get('FIRESTORE_KEY')
-    if not encoded_key:
-        raise Exception("FIRESTORE_KEY environment variable not found.")
-    decoded_key = base64.b64decode(encoded_key)
-    service_account_info = json.loads(decoded_key)
-    cred = credentials.Certificate(service_account_info)
+    key_dict = json.loads(st.secrets["textkey"])
+    creds = service_account.Credentials.from_service_account_info(key_dict)
     firebase_admin.initialize_app(cred)
     return firestore.client()
 
