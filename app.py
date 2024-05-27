@@ -32,7 +32,7 @@ def is_valid_json(data):
 @st.cache_resource
 def init_connection():
     key_dict = json.loads(st.secrets["textkey"])
-    creds = service_account.Credentials.from_service_account_info(key_dict)
+    cred = credentials.Certificate(key_dict)
     firebase_admin.initialize_app(cred)
     return firestore.client()
 
