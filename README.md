@@ -77,7 +77,7 @@ You can also deploy the same on **[HuggingFace Spaces](https://huggingface.co/sp
 
 - The application uses a FAISS index to store the CSV and PDF data embeddings. If the index file (`faiss_index`) does not exist, it will be created automatically.
 - The CSV data file path is set in the `data_source` variable, and the PDF resume file path is set in the `pdf_source` variable.
-- The Cloud FireStone connection details are set using the environment secrets `firebase_key`.
+- The Cloud FireStore connection details are set using the environment secrets `firebase_key`.
 
 ## Acknowledgements
 
