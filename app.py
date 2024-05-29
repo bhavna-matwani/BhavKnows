@@ -56,7 +56,7 @@ else:
 
 # Streamlit app title and disclaimer
 st.title("BhavKnow - Resume Bot for Bhavna")
-components.html(footer_html, height=25)
+st.html(footer_html)
 with st.expander("⚠️Disclaimer"):
     st.write("""This bot is a LLM trained on GPT-3.5-turbo model to answer questions about Bhavna's professional background and qualifications. Your responses are recorded in a database for quality assurance and improvement purposes. Please be respectful and avoid asking personal or inappropriate questions.""")
 
@@ -154,9 +154,9 @@ if "messages" not in st.session_state:
             Welcome! I'm Resume Bot, a virtual assistant dedicated to showcasing Bhavna Matwani's remarkable qualifications and career achievements. Here to provide an in-depth view of her skills, experiences, and academic background, I can offer insights into various facets of her professional journey.
 
             - Her Master's in Computer Science from NYU
-            - Her hands-on experience developing AI solutions like SmartSMS generator and FrameForesight
+            - Her hands-on experience developing AI solutions like SmartSMS generator, Enhancing LLM responses using RAG and FrameForesight
             - Her proven track record in roles at Vimbly Group, Mastercard and IISc Bangalore
-            - His proficiency in programming languages, software development, ML frameworks, and cloud platforms
+            - Her proficiency in programming languages, software development, ML frameworks, and cloud platforms
             - Her passion for leveraging transformative technologies for positive societal impact
 
             Feel free to ask about any details of her education, work experience, technical skills, or her contributions to various projects and roles. What would you like to know more about?
