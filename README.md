@@ -11,67 +11,11 @@ This Streamlit application serves as a chatbot, providing information about Bhav
 - Stores conversation history in a Cloud Firebase database for further analysis
 - Supports both CSV and PDF (resume) data sources
 
-## Link
-
-Resume Bot Wesbite : 
-
 ## Prerequisites
 
 - Python 3.9 or higher
 - OpenAI API key
 - Cloud Firebase project
-
-## Installation
-
-1. Fork my repository and change the name to your desired name
-2. Clone the repository:
-
-```
-git clone https://github.com/{username}/{yourRepoName}.git && cd yourRepoName
-```
-
-2. Install the required dependencies:
-
-```
-pip install -r requirements.txt
-```
-
-3. Update the following files:
-   * Replace all instance of the name `Bhavna` with your name and nickname in the following files:
-     * `app.py`
-     * ``templates/template.json``
-   * Change the following in the `data` folder
-     * `Resume.pdf`
-     * `about_me.csv` with relevant questions about you
-4. Set up the environment variables:
-   - Create a `.toml file with the OPENAI key and the FireBase JSON key inputted (During the development process)`       in the .streamlit folder
-5. Run the `eda.ipynb` notebook to update your FAISS indexes 
-
-## Usage
-
-1. Run the Streamlit application:
-
-```
-streamlit run app.py
-```
-
-2. The application will open in your default web browser.
-3. Ask questions about your background and qualifications, and the chatbot will provide relevant responses.
-
-## Publishing your app
-
-1. Once you commit all your files to **GitHub**, create an account in [**Streamlit.io** ](https://share.streamlit.io/)preferably with your GitHub account.
-2. Click on the `New app` option and input as follows:
-
-   ![1714278894321](image/README/1714278894321.png)
-3. Input your `OPENAI_API_KEY` and `firebase_json_key` using the **Advanced settings...** option
-
-   ![1714279076799](image/README/1714279076799.png)
-4. Click on **Deploy** button
-
-### Note
-
-You can also deploy the same on **[HuggingFace Spaces](https://huggingface.co/spaces)**. You can find more documentation on the same [here](https://huggingface.co/docs/hub/en/spaces-sdks-streamlit).
 
 ## Configuration
 
